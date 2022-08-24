@@ -88,4 +88,4 @@ class Database:
         cls.cursor.execute(command)
         return [data[0] for data in cls.cursor.fetchall()]
 
-Database.connect(database="ShoppingAppppp")
+Database.connect()
