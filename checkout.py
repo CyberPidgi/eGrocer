@@ -17,9 +17,9 @@ def checkout_window():
     master = tk.Tk()
     data = Database.get_column_data("cart", "total_price")
     total_price = str(sum([float(price) for price in data]))
-    tk.Label(master, text="Total Price: ").grid(row=0, column=0)
-    tk.Label(master, text="$" + str(total_price)).grid(row=0, column=1)
-    tk.Button(master, text="Buy", command=lambda: master.destroy()).grid(row=1, column=0)
+    tk.Label(master, text=f"Total Price: ${total_price}").grid(row=0, column=0)
+    tk.Label(master, text="Only Cash On Delivery!").grid(row=1, column=0)
+    tk.Button(master, text="Buy", command=lambda: master.destroy()).grid(row=2, column=0)
     master.mainloop()
     successful_purchase()
 

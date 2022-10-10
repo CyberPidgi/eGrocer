@@ -34,6 +34,10 @@ class Database:
                 raise Exception("Failed to connect to database.")
             cls.create_database(database)
             cls.cursor.execute(f"USE {database};")
+            
+    @classmethod
+    def create_database(cls, database):
+        cls.cursor.execute(f"CREATE DATABASE {database};")
     
     @classmethod
     def get_data(cls, table_name):

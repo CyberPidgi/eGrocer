@@ -73,7 +73,7 @@ def search_product(master, search_text):
     for product in all_products:
         
         # check if what the customer searched for is in the product name
-        if not search_text.get() in product[0].lower():
+        if not search_text.get().lower() in product[0].lower():
             continue
         
         # convert the product to a dictionary

@@ -1,5 +1,6 @@
 import tkinter as tk
 from Database import Database
+from sign_up_page import sign_up_window
 from encrypt_password import encrypt_password
 
 cleared = False
@@ -15,7 +16,11 @@ def verify(username, password, master):
     if encrypt_password(password) == record[1]:
         cleared = True
         master.destroy()
-    
+
+
+def open_sign_up_window():
+    global cleared
+    cleared = sign_up_window()
     
 
 def login_window():
@@ -31,7 +36,8 @@ def login_window():
     entry = tk.Entry(root, textvariable=password)
     entry.grid(column=1, row=1)
     entry.config(show="*")
-    tk.Button(root, text="Login", command=lambda: verify(username, password, root)).place(x=40, y=43)
+    tk.Button(root, text="Login", command=lambda: verify(username, password, root)).place(x=15, y=43)
+    tk.Button(root, text="Sign Up", command=open_sign_up_window).place(x=65, y=43)
     root.mainloop()
     
     return cleared
