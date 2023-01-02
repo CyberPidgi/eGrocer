@@ -4,6 +4,7 @@ from Database import Database
 
 total_price = 0
 ITEM_KEYS = Database.get_column_names("cart")
+price_label = None
 tree = None
 
 
@@ -39,10 +40,16 @@ def change_quantity(cart_master):
     
 
 def display_total_price(master):
-    global total_price
+    global total_price, price_label
     data = Database.get_column_data("cart", "total_price")
     total_price = str(sum([float(price) for price in data]))
-    tk.Label(master, text="$" + total_price).grid(row=2, column=2) 
+    
+    try:
+        price_label.destroy()
+    except (tk.TclError, AttributeError):
+        pass
+    price_label = tk.Label(master, text="$" + total_price)
+    price_label.grid(row=2, column=2) 
     
 
 def remove_item(cart_master):

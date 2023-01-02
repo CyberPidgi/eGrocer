@@ -16,7 +16,6 @@ def add_new_login(username, password, c_password, master):
     master.destroy()
     cleared = True
     
-    
 
 def sign_up_window():
     root = tk.Tk()
